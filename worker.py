@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 import app
 import storage
 
-INTERVAL=max(180,int(os.getenv('EDGE_REFRESH_INTERVAL_SECONDS','600')))
+INTERVAL=max(180,int(os.getenv('EDGE_REFRESH_INTERVAL_SECONDS','300')))
 
 def main():
     while True:

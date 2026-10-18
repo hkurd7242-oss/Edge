@@ -1,3 +1,16 @@
+# Edge v2.1 — Mobile intelligence rebuild
+
+## What changed in v2.1
+- Reworked small-screen spacing, bottom navigation, tap targets, card hierarchy and asset identity presentation.
+- Radar cards now show token image when DexScreener supplies one, ticker/name, chain/DEX, price, liquidity, contract and pool address with copy controls, observed activity and risk flags.
+- On-chain asymmetry ideas carry the same ticker, logo, contract, pair URL, chain, DEX, price and liquidity metadata when supplied by the source. Macro ideas use clear asset-class glyphs.
+- First open automatically triggers a refresh when the cache has no usable data. The UI polls the cached dashboard every 45 seconds; the background worker refreshes providers every 300 seconds by default. Manual refresh remains an override, not the only update path.
+- Knowledge includes live case studies drawn from current news and scheduled events, alongside a curated, zero-per-request-cost curriculum and persisted recall progress. The core principles are editorially curated; the live examples are source-driven rather than hardcoded.
+- Bumped the service-worker cache name so installed clients can update to the new interface.
+
+## Flat-file GitHub upload
+All application files in this package are at the ZIP root. Upload the extracted files to the repository root and commit to `main`; do not upload only the ZIP. `test_edge_v2.py` is intentionally at the root, so run it with `python -m unittest test_edge_v2 -v`.
+
 # Edge — Cross-Asset Intelligence (v2)
 
 **Purpose:** a mobile-first, low-cost research workspace for crypto, gold/metals, macroeconomic releases, financial news, asymmetric-trade research, and deliberate trader education. Edge is a decision-support product, not an execution bot and not a price-prediction engine.

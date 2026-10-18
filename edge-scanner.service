@@ -8,7 +8,7 @@ Type=simple
 User=root
 WorkingDirectory=/opt/edge-intelligence
 Environment=PYTHONUNBUFFERED=1
-Environment=EDGE_REFRESH_INTERVAL_SECONDS=600
+Environment=EDGE_REFRESH_INTERVAL_SECONDS=300
 ExecStart=/opt/edge-intelligence/.venv/bin/python /opt/edge-intelligence/worker.py
 Restart=always
 RestartSec=10

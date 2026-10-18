@@ -20,6 +20,15 @@ class IntelligenceTests(unittest.TestCase):
         p={'baseToken':{'symbol':'TEST','name':'Test','address':'abc'},'chainId':'solana','dexId':'raydium','pairAddress':'pair','url':'https://example.com','priceUsd':'1','pairCreatedAt':int(__import__('time').time()*1000)-3600000,'volume':{'h1':100000,'h6':180000,'h24':250000},'liquidity':{'usd':10000},'txns':{'h1':{'buys':80,'sells':20},'h6':{'buys':200,'sells':100},'h24':{'buys':400,'sells':300}},'priceChange':{'h1':4,'h24':35}}
         x=intel._dex_pair_score(p)
         self.assertGreater(x['score'],0); self.assertTrue(x['evidence']); self.assertTrue(x['risks']); self.assertIn('not a price prediction',x['caveat'])
+    def test_pair_score_includes_token_identity_and_logo(self):
+        p={'baseToken':{'symbol':'EDGE','name':'Edge Token','address':'So11111111111111111111111111111111111111112'},'quoteToken':{'symbol':'SOL'},'chainId':'solana','dexId':'raydium','pairAddress':'pair-123','url':'https://dexscreener.com/solana/pair-123','info':{'imageUrl':'https://cdn.example/token.png'},'priceUsd':'0.123','volume':{'h1':1000,'h6':3000,'h24':5000},'liquidity':{'usd':50000},'txns':{'h1':{'buys':12,'sells':4},'h24':{'buys':80,'sells':40}},'priceChange':{'h24':4}}
+        x=intel._dex_pair_score(p)
+        self.assertEqual(x['asset'],'EDGE')
+        self.assertEqual(x['token_address'],'So11111111111111111111111111111111111111112')
+        self.assertEqual(x['logo_url'],'https://cdn.example/token.png')
+        self.assertEqual(x['quote_symbol'],'SOL')
+        self.assertEqual(x['pair_url'],'https://dexscreener.com/solana/pair-123')
+
     def test_failed_quote_is_not_fabricated(self):
         # The provider wrapper creates a null price on failure; the app must not invent a quote.
         x={'symbol':'GC=F','price':None,'status':'provider_unavailable'}
