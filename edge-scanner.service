@@ -1,0 +1,17 @@
+[Unit]
+Description=Edge Opportunity Intelligence Background Scanner
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/edge-intelligence
+Environment=EDGE_SCAN_INTERVAL_SECONDS=180
+Environment=EDGE_MARKET_LIMIT=100
+ExecStart=/opt/edge-intelligence/.venv/bin/python /opt/edge-intelligence/worker.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
