@@ -1,5 +1,5 @@
 [Unit]
-Description=Edge Opportunity Intelligence Background Scanner
+Description=Edge Cross-Asset Intelligence Refresh Worker
 After=network-online.target
 Wants=network-online.target
 
@@ -7,8 +7,8 @@ Wants=network-online.target
 Type=simple
 User=root
 WorkingDirectory=/opt/edge-intelligence
-Environment=EDGE_SCAN_INTERVAL_SECONDS=180
-Environment=EDGE_MARKET_LIMIT=100
+Environment=PYTHONUNBUFFERED=1
+Environment=EDGE_REFRESH_INTERVAL_SECONDS=600
 ExecStart=/opt/edge-intelligence/.venv/bin/python /opt/edge-intelligence/worker.py
 Restart=always
 RestartSec=10

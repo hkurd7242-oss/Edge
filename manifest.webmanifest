@@ -1,0 +1,13 @@
+{
+  "name": "Edge Cross-Asset Intelligence",
+  "short_name": "Edge",
+  "description": "Source-aware market catalysts, crypto discovery, asymmetry research and trader education.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0c100f",
+  "theme_color": "#101312",
+  "icons": [
+    { "src": "/static/edge-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
